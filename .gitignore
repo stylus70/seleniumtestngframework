@@ -1,0 +1,24 @@
+# Created by https://www.gitignore.io/api/java,eclipse,intellij
+# Edit at https://www.gitignore.io/?templates=java,eclipse,intellij
+
+
+### Eclipse ###
+
+target/
+reports/
+logs/
+/test-output/
+.settings/
+bin/
+
+
+### Eclipse Patch ###
+# Eclipse Core
+.project
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+
+# intellij configs
+.idea/
