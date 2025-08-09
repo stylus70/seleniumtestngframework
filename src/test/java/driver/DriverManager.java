@@ -15,11 +15,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DriverManager {
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+	private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static final ThreadLocal<WebDriverWait> wait = new ThreadLocal<>();
     
     public static WebDriver getDriver(String browserName) {
-        if (driver.get() == null) {
+ 
+    	if (driver.get() == null) {
             switch (browserName.toLowerCase()) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
