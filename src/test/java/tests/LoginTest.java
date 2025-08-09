@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import config.ConfigReader;
 import pages.LoginPage;
 import pages.DashboardPage;
 import org.testng.Assert;
@@ -14,7 +15,9 @@ public class LoginTest extends BaseTest {
         DashboardPage dashboardPage = new DashboardPage();
         
         test.info("Performing login with valid credentials");
-        loginPage.login("Admin", "admin123");
+        String username = ConfigReader.getProperty("username");
+        String password = ConfigReader.getProperty("password");
+        loginPage.login(username, password);
         
         test.info("Verifying successful login");
         Assert.assertTrue(dashboardPage.isTopbarHeaderDisplayed(), "Dashboard");

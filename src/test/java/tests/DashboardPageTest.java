@@ -1,6 +1,7 @@
 package tests;
 
 import base.BaseTest;
+import config.ConfigReader;
 import pages.LoginPage;
 import pages.DashboardPage;
 import org.testng.Assert;
@@ -12,7 +13,9 @@ public class DashboardPageTest extends BaseTest {
     @BeforeMethod
     public void loginToApp() {
         LoginPage loginPage = new LoginPage();
-        loginPage.login("Admin", "admin123");
+        String username = ConfigReader.getProperty("username");
+        String password = ConfigReader.getProperty("password");
+        loginPage.login(username, password);
     }
     
     @Test (priority = 1)
