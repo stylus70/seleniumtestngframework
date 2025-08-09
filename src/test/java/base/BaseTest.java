@@ -1,17 +1,23 @@
 package base;
 
-import config.ConfigReader;
-import driver.DriverManager;
-import utils.ExtentReportManager;
-import com.aventstack.extentreports.ExtentTest;
+import java.lang.reflect.Method;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
-import java.lang.reflect.Method;
+import com.aventstack.extentreports.ExtentTest;
+
+import config.ConfigReader;
+import driver.DriverManager;
+import utils.ExtentReportManager;
 
 public class BaseTest {
 	
