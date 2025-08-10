@@ -11,19 +11,19 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git branch: 'main', url: 'https://github.com/stylus70/seleniumtestngframework.git'
+        git 'https://github.com/stylus70/seleniumtestngframework.git'
       }
     }
 
     stage('Build') {
-      steps {
-        sh 'mvn clean install'
+      steps {        
+        sh 'mvn clean install -DskipTests'  // Build the project, skipping tests for now
       }
     }
 
     stage('Test') {
-      steps {
-        sh 'mvn test'
+      steps {        
+        sh 'mvn clean test' // Execute Selenium tests using Maven
       }
     }
 
@@ -31,6 +31,19 @@ pipeline {
       steps {
         junit '**/target/surefire-reports/*.xml'
       }
+    }
+
+    post {
+    always {
+        // Clean up workspace after the build
+        cleanWs()
+    }
+    success {
+        echo 'Selenium tests executed successfully!'
+    }
+    failure {
+        echo 'Selenium tests failed. Check reports for details.'
+    }
     }
   }
 }
