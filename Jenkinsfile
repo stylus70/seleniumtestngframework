@@ -32,8 +32,9 @@ pipeline {
         junit '**/target/surefire-reports/*.xml'
       }
     }
+  }
 
-    post {
+  post {
     always {
         // Clean up workspace after the build
         cleanWs()
@@ -43,7 +44,6 @@ pipeline {
     }
     failure {
         echo 'Selenium tests failed. Check reports for details.'
-    }
     }
   }
 }
